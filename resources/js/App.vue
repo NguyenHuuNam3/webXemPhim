@@ -1,16 +1,15 @@
 <template>
-  <div id="app">
-    <!-- <nav>
-      <router-link to="/">Home</router-link><br>
-      <router-link to="/About">About</router-link><br>
-      <router-link to="/Contact">Contact</router-link><br>
-    </nav> -->
+    <Header></Header>
     <router-view></router-view>
-  </div>
 </template>
 
 <script>
+import Header from './components/partials/Header.vue';
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Header,
+  }
 };
 </script>
