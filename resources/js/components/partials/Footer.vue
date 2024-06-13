@@ -12,7 +12,7 @@
             <a class="hover:text-primary-hoverText" href="https://mail.google.com/" onclick="copyEmail()">nhnam4411@gmail.com</a>
         </div>
     </div>
-    <span class="text-primary-lightWhite text-center w-full block font-medium text-xs">© Copyright 2024 designed by Nam</span>
+    <span class="text-primary-lightWhite text-center w-full block font-medium text-xs pb-2">© Copyright 2024 designed by Nam</span>
 </template>
 
 <script>

@@ -5,79 +5,132 @@
             <CaretLeftOutlined @click="prev" class="z-10 absolute text-6xl top-1/4 left-0 text-primary-wrap opacity-50 cursor-pointer hover:opacity-90"/>
             <CaretRightOutlined @click="next" class="z-10 absolute text-6xl top-1/4 right-0 text-primary-wrap opacity-50 cursor-pointer hover:opacity-90"/>
             <div ref="list" class="flex w-[10000px] transition-transform duration-700 box-border">
-                <img class="w-[216px] h-[150px] mr-2 cursor-pointer" src="https://img.youtube.com/vi/mzqvF_rIOx8/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/mzqvF_rIOx8/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/mzqvF_rIOx8/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/mzqvF_rIOx8/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/mzqvF_rIOx8/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/4tYuIU7pLmI/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/4tYuIU7pLmI/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/4tYuIU7pLmI/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/4tYuIU7pLmI/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/4tYuIU7pLmI/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/abPmZCZZrFA/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/abPmZCZZrFA/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/abPmZCZZrFA/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/abPmZCZZrFA/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/abPmZCZZrFA/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/zoEtcR5EW08/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/zoEtcR5EW08/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/zoEtcR5EW08/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/zoEtcR5EW08/sddefault.jpg"/>
-                <img class="w-[216px] h-[150px] mx-2 cursor-pointer" src="https://img.youtube.com/vi/zoEtcR5EW08/sddefault.jpg"/>
+                <div v-for="(item, index) in listDC" :key="index">
+                    <Card :value="item"/>
+                </div>
             </div>
         </div>
-        <h1 class="w-full text-primary-hoverText uppercase my-3 text-lg font-medium">phim lẻ mới</h1>
-        <div class="w-full flex flex-wrap truncate justify-between mb-6">
-            <div v-for="(item, index) in listLe" :key="index">
-                <Card :value="item"/>
-            </div>
-        </div>
-        <h1 class="w-full text-primary-hoverText uppercase my-3 text-lg font-medium">phim bộ mới</h1>
-        <div class="w-full flex flex-wrap truncate justify-between mb-6">
-            <div v-for="(item, index) in listBo" :key="index">
-                <Card :value="item"/>
-            </div>
-        </div>
-        <h1 class="w-full text-primary-hoverText uppercase my-3 text-lg font-medium">phim chiếu rạp mới</h1>
-        <div class="w-full flex flex-wrap truncate justify-between mb-6">
-            <div v-for="(item, index) in listRap" :key="index">
-                <Card :value="item"/>
-            </div>
-        </div>
+        <ListCard :value="listLe"/>
+        <ListCard :value="listBo"/>
+        <ListCard :value="listRap"/>
     </div>
 </template>
 
 <script>
 import { CaretRightOutlined,CaretLeftOutlined } from '@ant-design/icons-vue'
 import Card from './partials/Card.vue'
+import ListCard from './partials/ListCard.vue'
     export default {
         name: 'Home',
         data: function() {
             return {
                 x: 0,
                 timer: null,
-                listLe: [
-                    {videoID: "zoEtcR5EW08"},
-                    {videoID: "zoEtcR5EW08"},
-                    {videoID: "zoEtcR5EW08"},
-                    {videoID: "zoEtcR5EW08"},
-                    {videoID: "zoEtcR5EW08"},
-                ],
-                listBo: [
-                    {videoID: "4tYuIU7pLmI"},
-                    {videoID: "4tYuIU7pLmI"},
-                    {videoID: "4tYuIU7pLmI"},
-                    {videoID: "4tYuIU7pLmI"},
-                    {videoID: "4tYuIU7pLmI"},
-                ],
-                listRap: [
-                    {videoID: "abPmZCZZrFA"},
-                    {videoID: "abPmZCZZrFA"},
-                    {videoID: "abPmZCZZrFA"},
-                    {videoID: "abPmZCZZrFA"},
-                    {videoID: "abPmZCZZrFA"},
-                ],
+                listLe :{
+                    name: 'phim lẻ mới',
+                    list: [
+                        {videoID: "zoEtcR5EW08"},
+                        {videoID: "zoEtcR5EW08"},
+                        {videoID: "zoEtcR5EW08"},
+                        {videoID: "zoEtcR5EW08"},
+                        {videoID: "zoEtcR5EW08"},
+                        {videoID: "zoEtcR5EW08"},
+                        {videoID: "zoEtcR5EW08"},
+                        {videoID: "zoEtcR5EW08"},
+                        {videoID: "zoEtcR5EW08"},
+                        {videoID: "zoEtcR5EW08"},
+                        {videoID: "zoEtcR5EW08"},
+                        {videoID: "zoEtcR5EW08"},
+                        {videoID: "zoEtcR5EW08"},
+                        {videoID: "zoEtcR5EW08"},
+                        {videoID: "zoEtcR5EW08"},
+                    ],
+                },
+                listBo: {
+                    name: 'phim bộ mới',
+                    list: [
+                        {videoID: "4tYuIU7pLmI"},
+                        {videoID: "4tYuIU7pLmI"},
+                        {videoID: "4tYuIU7pLmI"},
+                        {videoID: "4tYuIU7pLmI"},
+                        {videoID: "4tYuIU7pLmI"},
+                    ],
+                },
+                listRap: {
+                    name: 'phim chiếu rạp mới',
+                    list: [
+                        {videoID: "abPmZCZZrFA"},
+                        {videoID: "abPmZCZZrFA"},
+                        {videoID: "abPmZCZZrFA"},
+                        {videoID: "abPmZCZZrFA"},
+                        {videoID: "abPmZCZZrFA"},
+                        {videoID: "abPmZCZZrFA"},
+                        {videoID: "abPmZCZZrFA"},
+                        {videoID: "abPmZCZZrFA"},
+                        {videoID: "abPmZCZZrFA"},
+                        {videoID: "abPmZCZZrFA"},
+                    ],
+                },
+                listDC: [
+                    {videoID: "mzqvF_rIOx8"},
+                    {videoID: "mzqvF_rIOx8",
+                        name: 'dc',
+                    },
+                    {videoID: "mzqvF_rIOx8",
+                        name: 'dc',
+                    },
+                    {videoID: "mzqvF_rIOx8",
+                        name: 'dc',
+                    },
+                    {videoID: "mzqvF_rIOx8",
+                        name: 'dc',
+                    },
+                    {videoID: "4tYuIU7pLmI",
+                        name: 'dc',
+                    },
+                    {videoID: "4tYuIU7pLmI",
+                        name: 'dc',
+                    },
+                    {videoID: "4tYuIU7pLmI",
+                        name: 'dc',
+                    },
+                    {videoID: "4tYuIU7pLmI",
+                        name: 'dc',
+                    },
+                    {videoID: "4tYuIU7pLmI",
+                        name: 'dc',
+                    },
+                    {videoID: "abPmZCZZrFA",
+                        name: 'dc',
+                    },
+                    {videoID: "abPmZCZZrFA",
+                        name: 'dc',
+                    },
+                    {videoID: "abPmZCZZrFA",
+                        name: 'dc',
+                    },
+                    {videoID: "abPmZCZZrFA",
+                        name: 'dc',
+                    },
+                    {videoID: "abPmZCZZrFA",
+                        name: 'dc',
+                    },
+                    {videoID: "zoEtcR5EW08",
+                        name: 'dc',
+                    },
+                    {videoID: "zoEtcR5EW08",
+                        name: 'dc',
+                    },
+                    {videoID: "zoEtcR5EW08",
+                        name: 'dc',
+                    },
+                    {videoID: "zoEtcR5EW08",
+                        name: 'dc',
+                    },
+                    {videoID: "zoEtcR5EW08",
+                        name: 'dc',
+                    },
+                ]
             };
         },
         mounted() {
@@ -92,6 +145,7 @@ import Card from './partials/Card.vue'
         },
         components: {
             Card,
+            ListCard,
             CaretLeftOutlined,
             CaretRightOutlined,
         },

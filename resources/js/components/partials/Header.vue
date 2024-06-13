@@ -7,7 +7,6 @@
                     <span class="p-1 bg-primary-wrap ml-1 rounded-lg font-bold">Hub</span>
                 </div>
             </a>
-
             <div class="flex-1 mx-4 flex justify-between items-center">
                 <div class="flex items-center">
                     <a class="group text-primary-white uppercase text-xs font-medium mx-2 h-10 leading-10 hover:opacity-85" href="/">
@@ -24,7 +23,6 @@
                     <icon-search class="cursor-pointer absolute h-10 w-10 leading-10 text-primary-lightWhite left-0 text-center"/>
                 </div>
             </div>
-
             <div>
                 <button class="text-primary-white rounded-md mr-2 px-5 text-xs font-medium h-10 bg-primary-wrap hover:opacity-85">Đăng nhập</button>
             </div>
