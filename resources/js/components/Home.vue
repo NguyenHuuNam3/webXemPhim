@@ -5,14 +5,14 @@
             <CaretLeftOutlined @click="prev" class="z-10 absolute text-6xl top-1/4 left-0 text-primary-wrap opacity-50 cursor-pointer hover:opacity-90"/>
             <CaretRightOutlined @click="next" class="z-10 absolute text-6xl top-1/4 right-0 text-primary-wrap opacity-50 cursor-pointer hover:opacity-90"/>
             <div ref="list" class="flex w-[10000px] transition-transform duration-700 box-border">
-                <div v-for="(item, index) in listDC" :key="index">
+                <div v-for="(item, index) in movies" :key="index">
                     <Card :value="item"/>
                 </div>
             </div>
         </div>
-        <ListCard :value="listLe"/>
-        <ListCard :value="listBo"/>
-        <ListCard :value="listRap"/>
+        <ListCard :movies="movies" name="phim lẻ mới"/>
+        <ListCard :movies="movies" name="phim bộ mới"/>
+        <ListCard :movies="movies" name="phim chiếu rạp mới"/>
     </div>
 </template>
 
@@ -20,117 +20,15 @@
 import { CaretRightOutlined,CaretLeftOutlined } from '@ant-design/icons-vue'
 import Card from './partials/Card.vue'
 import ListCard from './partials/ListCard.vue'
+import axios from 'axios';
+
     export default {
         name: 'Home',
         data: function() {
             return {
                 x: 0,
+                movies: [],
                 timer: null,
-                listLe :{
-                    name: 'phim lẻ mới',
-                    list: [
-                        {videoID: "zoEtcR5EW08"},
-                        {videoID: "zoEtcR5EW08"},
-                        {videoID: "zoEtcR5EW08"},
-                        {videoID: "zoEtcR5EW08"},
-                        {videoID: "zoEtcR5EW08"},
-                        {videoID: "zoEtcR5EW08"},
-                        {videoID: "zoEtcR5EW08"},
-                        {videoID: "zoEtcR5EW08"},
-                        {videoID: "zoEtcR5EW08"},
-                        {videoID: "zoEtcR5EW08"},
-                        {videoID: "zoEtcR5EW08"},
-                        {videoID: "zoEtcR5EW08"},
-                        {videoID: "zoEtcR5EW08"},
-                        {videoID: "zoEtcR5EW08"},
-                        {videoID: "zoEtcR5EW08"},
-                    ],
-                },
-                listBo: {
-                    name: 'phim bộ mới',
-                    list: [
-                        {videoID: "4tYuIU7pLmI"},
-                        {videoID: "4tYuIU7pLmI"},
-                        {videoID: "4tYuIU7pLmI"},
-                        {videoID: "4tYuIU7pLmI"},
-                        {videoID: "4tYuIU7pLmI"},
-                    ],
-                },
-                listRap: {
-                    name: 'phim chiếu rạp mới',
-                    list: [
-                        {videoID: "abPmZCZZrFA"},
-                        {videoID: "abPmZCZZrFA"},
-                        {videoID: "abPmZCZZrFA"},
-                        {videoID: "abPmZCZZrFA"},
-                        {videoID: "abPmZCZZrFA"},
-                        {videoID: "abPmZCZZrFA"},
-                        {videoID: "abPmZCZZrFA"},
-                        {videoID: "abPmZCZZrFA"},
-                        {videoID: "abPmZCZZrFA"},
-                        {videoID: "abPmZCZZrFA"},
-                    ],
-                },
-                listDC: [
-                    {videoID: "mzqvF_rIOx8"},
-                    {videoID: "mzqvF_rIOx8",
-                        name: 'dc',
-                    },
-                    {videoID: "mzqvF_rIOx8",
-                        name: 'dc',
-                    },
-                    {videoID: "mzqvF_rIOx8",
-                        name: 'dc',
-                    },
-                    {videoID: "mzqvF_rIOx8",
-                        name: 'dc',
-                    },
-                    {videoID: "4tYuIU7pLmI",
-                        name: 'dc',
-                    },
-                    {videoID: "4tYuIU7pLmI",
-                        name: 'dc',
-                    },
-                    {videoID: "4tYuIU7pLmI",
-                        name: 'dc',
-                    },
-                    {videoID: "4tYuIU7pLmI",
-                        name: 'dc',
-                    },
-                    {videoID: "4tYuIU7pLmI",
-                        name: 'dc',
-                    },
-                    {videoID: "abPmZCZZrFA",
-                        name: 'dc',
-                    },
-                    {videoID: "abPmZCZZrFA",
-                        name: 'dc',
-                    },
-                    {videoID: "abPmZCZZrFA",
-                        name: 'dc',
-                    },
-                    {videoID: "abPmZCZZrFA",
-                        name: 'dc',
-                    },
-                    {videoID: "abPmZCZZrFA",
-                        name: 'dc',
-                    },
-                    {videoID: "zoEtcR5EW08",
-                        name: 'dc',
-                    },
-                    {videoID: "zoEtcR5EW08",
-                        name: 'dc',
-                    },
-                    {videoID: "zoEtcR5EW08",
-                        name: 'dc',
-                    },
-                    {videoID: "zoEtcR5EW08",
-                        name: 'dc',
-                    },
-                    {videoID: "zoEtcR5EW08",
-                        name: 'dc',
-                    },
-                ]
             };
         },
         mounted() {
@@ -142,6 +40,16 @@ import ListCard from './partials/ListCard.vue'
                 }
                 this.$refs.list.style.transform = `translateX(${this.x}px)`
             }, 8000);
+        },
+        created() {
+            axios.get('/api/movies')
+            .then(response => {
+                this.movies = response.data;
+                console.log(response.data)
+            })
+            .catch(error => {
+                console.error(error);
+            });
         },
         components: {
             Card,

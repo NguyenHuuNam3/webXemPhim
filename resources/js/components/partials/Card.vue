@@ -23,7 +23,7 @@
         },
         computed: {
             thumbnailUrl() {
-                return `https://img.youtube.com/vi/${this.value.videoID}/sddefault.jpg`;
+                return `https://img.youtube.com/vi/${this.value.video}/sddefault.jpg`;
             }
         }
     }
