@@ -1,8 +1,8 @@
 <template>
     <h1 class="w-full text-primary-hoverText uppercase my-3 text-lg font-medium">{{ name }}</h1>
-    <div class="w-full flex flex-wrap truncate justify-between mb-6">
+    <div class="w-full flex flex-wrap mb-6 justify-between">
         <div v-for="(item, index) in movies" :key="index">
-            <Card :value="item"/>
+            <Card :value="item" customClass="mr-1"/>
         </div>
     </div>
 </template>

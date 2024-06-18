@@ -1,7 +1,7 @@
 <template>
     <div class="bg-primary">
         <Header></Header>
-        <router-view class="w-11/12 h-auto mx-auto my-8 bg-primary-content p-4 rounded-sm"></router-view>
+        <router-view class="w-[1180px] h-auto mx-auto my-8 bg-primary-content p-4 rounded-sm"></router-view>
         <Footer></Footer>
     </div>
 </template>

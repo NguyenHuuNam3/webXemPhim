@@ -6,7 +6,16 @@
             <CaretRightOutlined @click="next" class="z-10 absolute text-6xl top-1/4 right-0 text-primary-wrap opacity-50 cursor-pointer hover:opacity-90"/>
             <div ref="list" class="flex w-[10000px] transition-transform duration-700 box-border">
                 <div v-for="(item, index) in movies" :key="index">
-                    <Card :value="item"/>
+                    <Card :value="item" :idx="index" customClass="mr-[12px]"/>
+                </div>
+                <div v-for="(item, index) in movies" :key="index">
+                    <Card :value="item" :idx="index" customClass="mr-[12px]"/>
+                </div>
+                <div v-for="(item, index) in movies" :key="index">
+                    <Card :value="item" :idx="index" customClass="mr-[12px]"/>
+                </div>
+                <div v-for="(item, index) in movies" :key="index">
+                    <Card :value="item" :idx="index" customClass="mr-[12px]"/>
                 </div>
             </div>
         </div>
@@ -27,6 +36,7 @@ import axios from 'axios';
         data: function() {
             return {
                 x: 0,
+                loca: 1160,
                 movies: [],
                 timer: null,
             };
@@ -42,14 +52,7 @@ import axios from 'axios';
             }, 8000);
         },
         created() {
-            axios.get('/api/movies')
-            .then(response => {
-                this.movies = response.data;
-                console.log(response.data)
-            })
-            .catch(error => {
-                console.error(error);
-            });
+            this.getApi()
         },
         components: {
             Card,
@@ -60,20 +63,29 @@ import axios from 'axios';
         methods: {
             prev() {
                 if(this.x >= 0) {
-                    this.x = -1160 * 3
+                    this.x = -this.loca * 3
                 } else {
-                    this.x += 1160
+                    this.x += this.loca
                 }
                 this.$refs.list.style.transform = `translateX(${this.x}px)`
             },
             next() {
-                if(this.x <= -1160*3) {
+                if(this.x <= -this.loca*3) {
                     this.x = 0
                 } else {
-                    this.x -= 1160
+                    this.x -= this.loca
                 }
                 this.$refs.list.style.transform = `translateX(${this.x}px)`
             },
+            async getApi() {
+                try {
+                    const response = await axios.get('/api/movies');
+                    this.movies = response.data;
+                    console.log(response.data);
+                } catch (error) {
+                    console.error(error);
+                }
+            }
         },
     };
 </script>

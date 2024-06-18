@@ -16,3 +16,4 @@ use App\Http\Controllers\Api\MovieController;
 */
 
 Route::get('/movies', [MovieController::class, 'index']);
+Route::get('/movies/{id}', [MovieController::class, 'show']);

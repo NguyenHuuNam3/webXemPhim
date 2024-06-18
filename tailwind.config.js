@@ -19,6 +19,8 @@ export default {
             colors: {
                 primary: {
                     DEFAULT: '#263238',
+                    btnRed: '#942320',
+                    btnBlue: '#1c738d',
                     dark: '#0F172A',
                     wrap: '#D97706',
                     input: '#020617',
@@ -27,6 +29,7 @@ export default {
                     white: '#FFFFFF',
                     lightWhite: '#E2E8F0',
                     hoverText: '#FCD34D',
+                    text: '#e9c22c',
                 },
             },
         },
@@ -34,6 +37,9 @@ export default {
   variants: {
     extend: {
       animation: ['group-hover'],
+      display: ['group-hover'],
+      transform: ['group-hover'],
+      opacity: ['group-hover'],
     },
   },
   plugins: [],
