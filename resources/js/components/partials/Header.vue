@@ -13,9 +13,9 @@
                         trang chủ
                         <div ref="home" class="ml-[5%] w-[90%] group-hover:animate-expand group-hover:transition-all group-hover:bg-gradient-to-r from-pink-600 to-amber-600 h-1"></div>
                     </a>
-                    <a class="group text-primary-white uppercase text-xs font-medium mx-2 h-10 leading-10 hover:opacity-85" href="/contact">
-                        liên hệ
-                        <div ref="contact" class="ml-[5%] w-[90%] group-hover:animate-expand group-hover:transition-all group-hover:bg-gradient-to-r from-pink-600 to-amber-600 h-1"></div>
+                    <a class="group text-primary-white uppercase text-xs font-medium mx-2 h-10 leading-10 hover:opacity-85" href="/movies">
+                        danh sách phim
+                        <div ref="movies" class="ml-[5%] w-[90%] group-hover:animate-expand group-hover:transition-all group-hover:bg-gradient-to-r from-pink-600 to-amber-600 h-1"></div>
                     </a>
                 </div>
                 <div class="relative h-auto w-auto">
@@ -38,10 +38,10 @@ export default {
             this.$refs.home.classList.add('bg-gradient-to-r');
             this.$refs.home.classList.add('from-pink-600');
             this.$refs.home.classList.add('to-amber-600');
-        } else if(window.location.href.split('/')[3] == "contact") {
-            this.$refs.contact.classList.add('bg-gradient-to-r');
-            this.$refs.contact.classList.add('from-pink-600');
-            this.$refs.contact.classList.add('to-amber-600');
+        } else if(window.location.href.split('/')[3] == "movies") {
+            this.$refs.movies.classList.add('bg-gradient-to-r');
+            this.$refs.movies.classList.add('from-pink-600');
+            this.$refs.movies.classList.add('to-amber-600');
         }
     },
     name: 'Header',

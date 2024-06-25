@@ -30,6 +30,7 @@ export default {
                     lightWhite: '#E2E8F0',
                     hoverText: '#FCD34D',
                     text: '#e9c22c',
+                    textSafe : '#333',
                 },
             },
         },

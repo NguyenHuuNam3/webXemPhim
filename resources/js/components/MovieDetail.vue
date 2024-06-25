@@ -3,7 +3,7 @@
     <p class="text-primary-white mx-3 py-2">{{ movie.name }}</p>
     <div class="flex w-auto h-full">
         <div class="w-1/2 flex-1 relative mr-2">
-            <img class="w-full h-full" :src="thumbnailUrl" />
+            <img class="w-full h-full" :src="thumbnailUrl"/>
             <div class="flex justify-center items-center absolute bottom-0 w-full h-auto mb-2">
                 <a class="hover:opacity-85 w-auto h-auto py-2 px-4 rounded-sm ml-2 cursor-pointer flex items-center bg-primary-btnBlue text-primary-white">
                     <HeartTwoTone twoToneColor="#b71c1c" class="text-lg h-[32px]"/>
@@ -23,9 +23,7 @@
                 <span class="text-primary-white cursor-pointer hover:opacity-85">Trailer</span>
                 <span class="text-primary-white cursor-pointer hover:opacity-85">khác</span>
             </div>
-            <div>
-
-            </div>
+            
         </div>
     </div>
 </div>
